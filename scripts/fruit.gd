@@ -20,9 +20,8 @@ func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		update_color()
 		
-
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		body.add_fruit(color)
 		get_tree().queue_delete(self)
 		

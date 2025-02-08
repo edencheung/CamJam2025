@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://b08u4cm53v1pm"]
+[gd_scene load_steps=8 format=4 uid="uid://b08u4cm53v1pm"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_8cohf"]
 [ext_resource type="PackedScene" uid="uid://df8dh38cfnmmq" path="res://scenes/player.tscn" id="1_gkai8"]
 [ext_resource type="TileSet" uid="uid://q3yk5f0f1tvf" path="res://tilesets/tileset.tres" id="2_3mxnu"]
 [ext_resource type="PackedScene" uid="uid://c2q4vjm1gg1w4" path="res://scenes/colored.tscn" id="3_jlcot"]
 [ext_resource type="PackedScene" uid="uid://b5r3dms04q7rm" path="res://scenes/hud.tscn" id="4_pk6rt"]
+[ext_resource type="PackedScene" uid="uid://f1ksx4icru87" path="res://scenes/fruit.tscn" id="6_5tq1k"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o83id"]
 
@@ -43,3 +44,7 @@ position = Vector2(0, 100)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("WorldBoundaryShape2D_o83id")
 debug_color = Color(1, 0, 0, 0.843137)
+
+[node name="Fruit" parent="." instance=ExtResource("6_5tq1k")]
+position = Vector2(197, -4)
+color = 0

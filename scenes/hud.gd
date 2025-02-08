@@ -24,3 +24,6 @@ func decrement_counter(color: FruitColor) -> void:
 func get_counter(color: FruitColor) -> int:
 	return int(fruit_color_map[color].text)
 	
+func increment_counter(color: FruitColor) -> void:
+	var counter = fruit_color_map[color]
+	counter.text = str(int(counter.text) + 1)
