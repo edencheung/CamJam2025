@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce5drc1x3lejo"]
+
+[ext_resource type="Texture2D" uid="uid://pilbh3a34oqr" path="res://sprites/coin.png" id="1_1nyc1"]
+
+[sub_resource type="GDScript" id="GDScript_ciwaw"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3qq8"]
+size = Vector2(10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhgeh"]
+atlas = ExtResource("1_1nyc1")
+region = Rect2(0, 0, 16.7793, 16.4725)
+
+[node name="Checkpoint" type="Area2D"]
+script = SubResource("GDScript_ciwaw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u3qq8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_fhgeh")

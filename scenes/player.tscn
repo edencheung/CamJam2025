@@ -32,12 +32,12 @@ one_shot = true
 position = Vector2(0, 16)
 target_position = Vector2(13, 0)
 
-[node name="DeathDetection" type="Area2D" parent="."]
+[node name="AreaDetection" type="Area2D" parent="."]
 position = Vector2(5, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathDetection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetection"]
 position = Vector2(-5, 0)
 shape = SubResource("RectangleShape2D_t51ai")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="DeathDetection" to="." method="_on_death_detection_body_entered"]
+[connection signal="body_entered" from="AreaDetection" to="." method="_on_area_detection_body_entered"]

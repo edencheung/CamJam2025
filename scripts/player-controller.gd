@@ -39,7 +39,12 @@ var isDashing = false
 var hasDashed = false
 var isGrabbing = false
 
+var prev_checkpoint_position = Vector2(0, 0)
+
 enum FruitColor {RED, GREEN, BLUE}
+
+func _ready() -> void:
+	position = prev_checkpoint_position
 
 func _physics_process(delta):
 	if !isDashing:
@@ -209,16 +214,17 @@ func getInputAxis():
 	input_axis.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
 	input_axis = input_axis.normalized()
 
-func _on_death_detection_body_entered(body: Node2D):
-	if body.is_in_group("Danger") and $Timer.is_stopped():
-		Engine.time_scale = 0.3
-		$CollisionShape2D.queue_free()
-		$Timer.start()
-
 func _on_timer_timeout():
 	Engine.time_scale = 1
 	get_tree().reload_current_scene()
 	
 func add_fruit(color: FruitColor) -> void:
 	$"../HUD".increment_counter(color)
-	
+
+func _on_area_detection_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Danger"):
+		Engine.time_scale = 0.3
+		$CollisionShape2D.queue_free()
+		$Timer.start()
+	elif body.is_in_group("Checkpoint"):
+		prev_checkpoint_position = position
