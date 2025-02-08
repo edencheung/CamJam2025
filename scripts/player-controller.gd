@@ -44,7 +44,7 @@ var prev_checkpoint_position = Vector2(0, 0)
 enum FruitColor {RED, GREEN, BLUE}
 
 func _ready() -> void:
-	position = prev_checkpoint_position
+	prev_checkpoint_position = position
 
 func _physics_process(delta):
 	if !isDashing:
