@@ -1,3 +1,23 @@
-[gd_scene format=3 uid="uid://b3h8fuhfp6uaw"]
+[gd_scene load_steps=5 format=3 uid="uid://b3h8fuhfp6uaw"]
 
-[node name="Key" type="Node2D"]
+[ext_resource type="Script" path="res://scripts/key.gd" id="1_et3hr"]
+[ext_resource type="Texture2D" uid="uid://6nduegmfnagt" path="res://sprites/red_sprite_sheet.png" id="2_7p3gg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qo1cm"]
+atlas = ExtResource("2_7p3gg")
+region = Rect2(96, 320, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgblu"]
+size = Vector2(32, 31)
+
+[node name="Key" type="Area2D"]
+script = ExtResource("1_et3hr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_qo1cm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_xgblu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

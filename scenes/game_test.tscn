@@ -1,13 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://cvqaqgrxvsof8"]
+[gd_scene load_steps=9 format=4 uid="uid://c0o5h6kwnytcs"]
 
-[ext_resource type="Script" path="res://scenes/game.gd" id="1_h87ef"]
 [ext_resource type="PackedScene" uid="uid://df8dh38cfnmmq" path="res://scenes/player.tscn" id="2_vos1w"]
-[ext_resource type="TileSet" uid="uid://dxfoqkewb878c" path="res://tilesets/rock_tileset.tres" id="3_bplof"]
-[ext_resource type="Texture2D" uid="uid://mip3orflxbmu" path="res://sprites/environment_sheet.png" id="3_omya6"]
+[ext_resource type="TileSet" uid="uid://cwaudtun02h4f" path="res://tilesets/rock_tileset.tres" id="3_bplof"]
+[ext_resource type="Texture2D" uid="uid://mip3orflxbmu" path="res://spriteframes/environment_sheet.png" id="3_omya6"]
 [ext_resource type="TileSet" uid="uid://q3yk5f0f1tvf" path="res://tilesets/tileset.tres" id="4_gfd63"]
-[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="5_ywvec"]
-[ext_resource type="PackedScene" path="res://scenes/fruit.tscn" id="6_cbpyj"]
-[ext_resource type="Script" path="res://scenes/colored-tiles-manager.gd" id="7_5lwi6"]
+[ext_resource type="PackedScene" uid="uid://b5r3dms04q7rm" path="res://scenes/hud.tscn" id="5_ywvec"]
+[ext_resource type="PackedScene" uid="uid://f1ksx4icru87" path="res://scenes/fruit.tscn" id="6_cbpyj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3fsdy"]
 texture = ExtResource("3_omya6")
@@ -101,7 +99,6 @@ physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_3fsdy")
 
 [node name="game_test" type="Node2D"]
-script = ExtResource("1_h87ef")
 
 [node name="player" parent="." instance=ExtResource("2_vos1w")]
 z_index = 10
@@ -142,7 +139,6 @@ tile_map_data = PackedByteArray("AAAQAPb/AwAEAAMAAAARAPb/AwAEAAMAAAAUAPb/AwAEAAM
 tile_set = SubResource("TileSet_pcu0y")
 
 [node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("7_5lwi6")
 
 [node name="Ground" type="TileMapLayer" parent="Node2D"]
 use_parent_material = true
