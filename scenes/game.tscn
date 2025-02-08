@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://df8dh38cfnmmq" path="res://scenes/player.tscn" id="1_gkai8"]
 [ext_resource type="TileSet" uid="uid://q3yk5f0f1tvf" path="res://tilesets/tileset.tres" id="2_3mxnu"]
 [ext_resource type="Texture2D" uid="uid://mip3orflxbmu" path="res://sprites/environment_sheet.png" id="3_gf3pv"]
-[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="4_pk6rt"]
+[ext_resource type="PackedScene" uid="uid://b5r3dms04q7rm" path="res://scenes/hud.tscn" id="4_pk6rt"]
 [ext_resource type="Script" path="res://scenes/colored-tiles-manager.gd" id="7_nyoab"]
-[ext_resource type="PackedScene" path="res://scenes/fruit.tscn" id="7_x4mgr"]
+[ext_resource type="PackedScene" uid="uid://f1ksx4icru87" path="res://scenes/fruit.tscn" id="7_x4mgr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xi3f6"]
 texture = ExtResource("3_gf3pv")
@@ -367,21 +367,22 @@ position = Vector2(-16, 0)
 tile_map_data = PackedByteArray("AAAKAAQAAwAEAAMAAAALAAQAAwAEAAMAAAAMAAQAAwAEAAMAAAAQAPb/AwAEAAMAAAARAPb/AwAEAAMAAAAUAPb/AwAEAAMAAAAVAPb/AwAEAAMAAAA=")
 tile_set = SubResource("TileSet_pcu0y")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="colored" type="Node2D" parent="."]
 script = ExtResource("7_nyoab")
 
-[node name="Red" type="TileMapLayer" parent="Node2D"]
+[node name="Red" type="TileMapLayer" parent="colored"]
 modulate = Color(1, 0, 0, 1)
+position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAA=")
 tile_set = ExtResource("2_3mxnu")
 
-[node name="Blue" type="TileMapLayer" parent="Node2D"]
+[node name="Blue" type="TileMapLayer" parent="colored"]
 self_modulate = Color(0.384314, 0.431373, 1, 1)
 position = Vector2(80, 0)
 tile_map_data = PackedByteArray("AAAUAAAAAAAGAAAAAAAVAAAAAAAGAAAAAAAWAAAAAAAGAAAAAAA=")
 tile_set = ExtResource("2_3mxnu")
 
-[node name="Green" type="TileMapLayer" parent="Node2D"]
+[node name="Green" type="TileMapLayer" parent="colored"]
 self_modulate = Color(0.4, 1, 0.396078, 1)
 position = Vector2(-80, 0)
 tile_map_data = PackedByteArray("AAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAA=")

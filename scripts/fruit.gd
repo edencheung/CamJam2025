@@ -3,14 +3,23 @@ extends Area2D
 
 enum FruitColor {RED, GREEN, BLUE}
 @export var color : FruitColor
+@export var is_packaged : bool
 
 func update_color() -> void:
-	if color == FruitColor.RED:
-		$Sprite2D.texture.set_region(Rect2(0, 48, 16, 16))
-	elif color == FruitColor.GREEN:
-		$Sprite2D.texture.set_region(Rect2(0, 0, 16, 16))
-	elif color == FruitColor.BLUE:
-		$Sprite2D.texture.set_region(Rect2(0, 32, 16, 16))
+	if not is_packaged:
+		if color == FruitColor.RED:
+			$Sprite2D.texture.set_region(Rect2(0, 48, 16, 16))
+		elif color == FruitColor.GREEN:
+			$Sprite2D.texture.set_region(Rect2(0, 0, 16, 16))
+		elif color == FruitColor.BLUE:
+			$Sprite2D.texture.set_region(Rect2(0, 32, 16, 16))
+	else:
+		if color == FruitColor.RED:
+			$Sprite2D.texture.set_region(Rect2(32, 48, 16, 16))
+		elif color == FruitColor.GREEN:
+			$Sprite2D.texture.set_region(Rect2(32, 0, 16, 16))
+		elif color == FruitColor.BLUE:
+			$Sprite2D.texture.set_region(Rect2(32, 32, 16, 16))
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,7 +38,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if Engine.is_editor_hint():
 		return
 	if body.is_in_group("Player"):
-		body.add_fruit(color)
+		body.add_fruit(color, is_packaged)
 		get_tree().queue_delete(self)
 		
 	
