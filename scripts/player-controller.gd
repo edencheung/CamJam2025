@@ -91,7 +91,7 @@ func _physics_process(delta):
 			jump(delta)
 			frictionOnAir()
 		else:
-			if $WallCast.is_colliding():
+			if $WallCast.is_colliding() and $WallCast.get_collider().is_in_group("Climbable"):
 				wallJump(delta)
 			frictionOnAir()
 			jumpBufferTimer = JUMP_BUFFER_TIME #amount of frame
