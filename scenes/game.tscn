@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_8cohf"]
 [ext_resource type="PackedScene" uid="uid://df8dh38cfnmmq" path="res://scenes/player.tscn" id="1_gkai8"]
-[ext_resource type="TileSet" uid="uid://q3yk5f0f1tvf" path="res://tilesets/tileset.tres" id="2_3mxnu"]
+[ext_resource type="TileSet" uid="uid://dbxygj4uh1mke" path="res://tilesets/climable.tres" id="2_3mxnu"]
 [ext_resource type="Texture2D" uid="uid://mip3orflxbmu" path="res://sprites/environment_sheet.png" id="3_gf3pv"]
-[ext_resource type="PackedScene" uid="uid://b5r3dms04q7rm" path="res://scenes/hud.tscn" id="4_pk6rt"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="4_pk6rt"]
 [ext_resource type="Script" path="res://scripts/colored-tiles-manager.gd" id="7_nyoab"]
 [ext_resource type="PackedScene" uid="uid://f1ksx4icru87" path="res://scenes/fruit.tscn" id="7_x4mgr"]
 
