@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=4 uid="uid://b08u4cm53v1pm"]
+[gd_scene load_steps=13 format=4 uid="uid://b08u4cm53v1pm"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_8cohf"]
 [ext_resource type="PackedScene" uid="uid://df8dh38cfnmmq" path="res://scenes/player.tscn" id="1_gkai8"]
 [ext_resource type="TileSet" uid="uid://q3yk5f0f1tvf" path="res://tilesets/tileset.tres" id="2_3mxnu"]
-[ext_resource type="Texture2D" uid="uid://mip3orflxbmu" path="res://sprites/environment_sheet.png" id="3_gf3pv"]
+[ext_resource type="Texture2D" uid="uid://mip3orflxbmu" path="res://spriteframes/environment_sheet.png" id="3_gf3pv"]
 [ext_resource type="PackedScene" uid="uid://b5r3dms04q7rm" path="res://scenes/hud.tscn" id="4_pk6rt"]
 [ext_resource type="Script" path="res://scripts/colored-tiles-manager.gd" id="7_nyoab"]
-[ext_resource type="PackedScene" uid="uid://f1ksx4icru87" path="res://scenes/fruit.tscn" id="7_x4mgr"]
+[ext_resource type="PackedScene" uid="uid://bvy47aurwwnl6" path="res://scenes/door.tscn" id="7_qp3xs"]
+[ext_resource type="PackedScene" uid="uid://b3h8fuhfp6uaw" path="res://scenes/key.tscn" id="8_rixe4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xi3f6"]
 texture = ExtResource("3_gf3pv")
@@ -357,10 +358,6 @@ z_index = -1
 position = Vector2(16, -24)
 tile_set = ExtResource("2_3mxnu")
 
-[node name="Fruit" parent="." instance=ExtResource("7_x4mgr")]
-position = Vector2(144, -80)
-is_packaged = false
-
 [node name="Spikes" type="TileMapLayer" parent="." groups=["Danger"]]
 z_index = -1
 position = Vector2(-16, 0)
@@ -388,4 +385,12 @@ position = Vector2(-80, 0)
 tile_map_data = PackedByteArray("AAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAA=")
 tile_set = ExtResource("2_3mxnu")
 
-[node name="Red" type="TileMapLayer" parent="Node2D"]
+[node name="Node2D#Red" type="TileMapLayer" parent="."]
+
+[node name="Door" parent="." instance=ExtResource("7_qp3xs")]
+position = Vector2(98, -26)
+id = "test"
+
+[node name="Key" parent="." instance=ExtResource("8_rixe4")]
+position = Vector2(244, -51)
+id = "test"

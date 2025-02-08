@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://djl86pdn8y4ju"]
 
 [ext_resource type="PackedScene" uid="uid://df8dh38cfnmmq" path="res://scenes/player.tscn" id="1_kp3om"]
-[ext_resource type="Texture2D" uid="uid://mip3orflxbmu" path="res://sprites/environment_sheet.png" id="2_crpdw"]
+[ext_resource type="Texture2D" uid="uid://mip3orflxbmu" path="res://spriteframes/environment_sheet.png" id="2_crpdw"]
 [ext_resource type="TileSet" uid="uid://q3yk5f0f1tvf" path="res://tilesets/tileset.tres" id="3_33gtl"]
 [ext_resource type="PackedScene" uid="uid://c2q4vjm1gg1w4" path="res://scenes/colored.tscn" id="4_5gjjk"]
 [ext_resource type="PackedScene" uid="uid://b5r3dms04q7rm" path="res://scenes/hud.tscn" id="5_0iy6s"]
