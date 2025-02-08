@@ -1,8 +1,12 @@
 extends Node2D
 
-@onready var red = $Red
-@onready var green = $Green
-@onready var blue = $Blue
+enum FruitColor {RED, GREEN, BLUE}
+
+@onready var fruit_color_map = {
+	FruitColor.RED: $Red,
+	FruitColor.GREEN: $Green,
+	FruitColor.BLUE: $Blue
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,20 +17,10 @@ func _process(delta):
 	pass	
 		
 func reset():
-	red.hide()
-	green.hide()
-	blue.hide()
-	red.collision_enabled = false
-	green.collision_enabled = false
-	blue.collision_enabled = false
+	for color in fruit_color_map.values():
+		color.hide()
+		color.collision_enabled = false
 	
-func show_color(color: String):
-	if color == "red":
-		red.show()
-		red.collision_enabled = true
-	elif color == "green":
-		green.show()
-		green.collision_enabled = true
-	elif color == "blue":
-		blue.show()
-		blue.collision_enabled = true
+func show_color(color: FruitColor):
+	fruit_color_map[color].show()
+	fruit_color_map[color].collision_enabled = true

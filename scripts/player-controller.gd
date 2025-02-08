@@ -39,6 +39,8 @@ var isDashing = false
 var hasDashed = false
 var isGrabbing = false
 
+enum FruitColor {RED, GREEN, BLUE}
+
 func _physics_process(delta):
 	if !isDashing:
 		if velocity.y < MAX_FALL_SPEED:
@@ -207,8 +209,6 @@ func getInputAxis():
 	input_axis.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
 	input_axis = input_axis.normalized()
 
-
-
 func _on_death_detection_body_entered(body: Node2D):
 	if body.is_in_group("Danger"):
 		Engine.time_scale = 0.3
@@ -218,3 +218,7 @@ func _on_death_detection_body_entered(body: Node2D):
 func _on_timer_timeout():
 	Engine.time_scale = 1
 	get_tree().reload_current_scene()
+	
+func add_fruit(color: FruitColor) -> void:
+	pass
+	

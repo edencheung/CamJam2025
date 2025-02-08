@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://f1ksx4icru87"]
+
+[ext_resource type="Script" path="res://scripts/fruit.gd" id="1_p5lpc"]
+[ext_resource type="Texture2D" uid="uid://dd7la31n8tked" path="res://sprites/fruit.png" id="1_saapn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8tdt"]
+atlas = ExtResource("1_saapn")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgblu"]
+size = Vector2(11, 13)
+
+[node name="Fruit" type="Area2D"]
+script = ExtResource("1_p5lpc")
+color = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_n8tdt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_xgblu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

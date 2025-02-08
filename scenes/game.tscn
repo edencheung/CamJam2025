@@ -42,4 +42,4 @@ position = Vector2(0, 100)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("WorldBoundaryShape2D_o83id")
-debug_color = Color(0.956863, 0, 0.537255, 0.843137)
+debug_color = Color(1, 0, 0, 0.843137)
