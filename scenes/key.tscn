@@ -10,7 +10,7 @@ region = Rect2(96, 320, 32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xgblu"]
 size = Vector2(32, 31)
 
-[node name="Key" type="Area2D"]
+[node name="Key" type="Area2D" groups=["Key"]]
 script = ExtResource("1_et3hr")
 color = 2
 

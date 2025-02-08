@@ -239,6 +239,15 @@ func _on_area_detection_body_entered(body: Node2D) -> void:
 		if has_key(body.id):
 			use_key(body.id)
 			get_tree().queue_delete(body)
+
+func change_color(color: FruitColor) -> void:
+	var keys_to_erase = []
+	for key in keys:
+		if key.color != color:
+			keys_to_erase.append(key)
+	for key in keys_to_erase:
+		keys.erase(key)
+		key.picked_up = false
 		
 func update_follows(delta: float):
 	var parent = self

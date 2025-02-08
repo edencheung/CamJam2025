@@ -35,6 +35,8 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if Engine.is_editor_hint():
 		return
+	if picked_up: 
+		return
 	if body.is_in_group("Player"):
 		body.add_key(self)
 		picked_up = true

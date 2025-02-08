@@ -22,5 +22,15 @@ func _process(delta: float) -> void:
 
 	for color in FruitColor.values():
 		if Input.is_action_just_pressed("change_%s" % [fruit_color_to_string[color]]) and $HUD.get_counter(color) > 0:
-			$HUD.decrement_counter(color)
-			$colored.show_color(color)
+			change_color(color)
+			
+func change_color(color: FruitColor):
+	$HUD.decrement_counter(color)
+	$colored.show_color(color)
+	$player.change_color(color)
+	for child in get_children():
+		if child.is_in_group('Key'):
+			if child.color == color:
+				child.show()
+			else:
+				child.hide()

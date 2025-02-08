@@ -17,10 +17,12 @@ func _process(delta):
 	pass	
 		
 func reset():
-	for color in fruit_color_map.values():
-		color.hide()
-		color.collision_enabled = false
-	
+	for elm in fruit_color_map.values():
+		for child in elm.get_children():
+			child.hide()
+			child.collision_enabled = false
+		
 func show_color(color: FruitColor):
-	fruit_color_map[color].show()
-	fruit_color_map[color].collision_enabled = true
+	for child in fruit_color_map[color].get_children():
+		child.show()
+		child.collision_enabled = true
