@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://b08u4cm53v1pm"]
+[gd_scene load_steps=14 format=4 uid="uid://b08u4cm53v1pm"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_8cohf"]
 [ext_resource type="PackedScene" uid="uid://df8dh38cfnmmq" path="res://scenes/player.tscn" id="1_gkai8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/colored-tiles-manager.gd" id="7_nyoab"]
 [ext_resource type="PackedScene" uid="uid://bvy47aurwwnl6" path="res://scenes/door.tscn" id="7_qp3xs"]
 [ext_resource type="PackedScene" uid="uid://b3h8fuhfp6uaw" path="res://scenes/key.tscn" id="8_rixe4"]
+[ext_resource type="PackedScene" uid="uid://f1ksx4icru87" path="res://scenes/fruit.tscn" id="9_apwnq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xi3f6"]
 texture = ExtResource("3_gf3pv")
@@ -394,3 +395,6 @@ id = "test"
 [node name="Key" parent="." instance=ExtResource("8_rixe4")]
 position = Vector2(244, -51)
 id = "test"
+
+[node name="Fruit" parent="." instance=ExtResource("9_apwnq")]
+position = Vector2(49, -37)
