@@ -219,10 +219,7 @@ func _on_timer_timeout():
 	get_tree().reload_current_scene()
 	
 func add_fruit(color: FruitColor, is_packaged: bool) -> void:
-	if is_packaged:
-		$"../HUD".increment_counter(color)
-	else:
-		$"../colored".show_color(color)
+	$"../HUD".increment_counter(color)
 
 func _on_area_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Danger"):
