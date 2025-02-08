@@ -4,26 +4,23 @@
 [ext_resource type="SpriteFrames" uid="uid://dymol6t0hrvcl" path="res://spriteframes/player.tres" id="2_att2a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ho6aa"]
-radius = 5.0
-height = 14.0
+radius = 8.0
+height = 32.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t51ai"]
-size = Vector2(12, 16)
+size = Vector2(18, 34)
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_rik5d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_att2a")
-animation = &"fall"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(5, 16)
 shape = SubResource("CapsuleShape2D_ho6aa")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 16)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
@@ -32,13 +29,13 @@ one_shot = true
 [node name="Rotatable" type="Node2D" parent="."]
 
 [node name="WallCast" type="RayCast2D" parent="."]
-position = Vector2(0, 5)
-target_position = Vector2(9, 0)
+position = Vector2(5, 16)
+target_position = Vector2(13, 0)
 
 [node name="DeathDetection" type="Area2D" parent="."]
+position = Vector2(5, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathDetection"]
-position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_t51ai")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

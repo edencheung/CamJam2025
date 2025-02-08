@@ -1,22 +1,22 @@
 extends CharacterBody2D
 
 
-const ACCELERATION = 3000
-const MAX_SPEED = 10000
-const MAX_FALL_SPEED = 150
-const JUMP_HEIGHT = 25000
-const MIN_JUMP_HEIGHT = 12000
+const ACCELERATION = 6000
+const MAX_SPEED = 20000
+const MAX_FALL_SPEED = 300
+const JUMP_HEIGHT = 50000
+const MIN_JUMP_HEIGHT = 24000
 const MAX_COYOTE_TIME = 6
 const MAX_COYOTE_WALL_TIME = 6
 const JUMP_BUFFER_TIME = 10
-const WALL_JUMP_AMOUNT = 12000
+const WALL_JUMP_AMOUNT = 24000
 const WALL_JUMP_TIME = 10
 const WALL_SLIDE_FACTOR = 0.8
 const WALL_HORIZONTAL_TIME = 30
-const GRAVITY = 1500
-const WEAK_GRAVITY = 500
-const DASH_SPEED = 10000
-const CLIMB_SPEED = 10000
+const GRAVITY = 3000
+const WEAK_GRAVITY = 1000
+const DASH_SPEED = 20000
+const CLIMB_SPEED = 20000
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 #@onready var ray_cast = $RayCast2D
@@ -110,7 +110,7 @@ func wallJump(delta):
 
 func wallSlide(delta):
 	if !canJump:
-		if $WallCast.is_colliding():
+		if $WallCast.is_colliding() and $WallCast.get_collider().is_in_group("Climbable"):
 			coyoteWallTimer = 0
 			wall_sliding = true
 			if Input.is_action_pressed("grab"):
