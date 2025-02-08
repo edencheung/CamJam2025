@@ -210,7 +210,7 @@ func getInputAxis():
 	input_axis = input_axis.normalized()
 
 func _on_death_detection_body_entered(body: Node2D):
-	if body.is_in_group("Danger"):
+	if body.is_in_group("Danger") and $Timer.is_stopped():
 		Engine.time_scale = 0.3
 		$CollisionShape2D.queue_free()
 		$Timer.start()
