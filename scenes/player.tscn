@@ -19,7 +19,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, 16)
+position = Vector2(0, 16)
 shape = SubResource("CapsuleShape2D_ho6aa")
 
 [node name="Timer" type="Timer" parent="."]
@@ -29,13 +29,14 @@ one_shot = true
 [node name="Rotatable" type="Node2D" parent="."]
 
 [node name="WallCast" type="RayCast2D" parent="."]
-position = Vector2(5, 16)
+position = Vector2(0, 16)
 target_position = Vector2(13, 0)
 
 [node name="DeathDetection" type="Area2D" parent="."]
 position = Vector2(5, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathDetection"]
+position = Vector2(-5, 0)
 shape = SubResource("RectangleShape2D_t51ai")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

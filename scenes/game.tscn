@@ -220,8 +220,7 @@ script = ExtResource("1_8cohf")
 
 [node name="player" parent="." instance=ExtResource("1_gkai8")]
 z_index = 10
-position = Vector2(16, -88)
-scale = Vector2(2, 2)
+position = Vector2(8, -64)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(1, -5)
