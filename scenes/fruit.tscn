@@ -13,7 +13,6 @@ size = Vector2(11, 13)
 [node name="Fruit" type="Area2D"]
 script = ExtResource("1_p5lpc")
 color = 2
-is_packaged = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_n8tdt")

@@ -41,6 +41,12 @@ var isGrabbing = false
 
 var prev_checkpoint_position = Vector2(0, 0)
 
+var keys = {
+	FruitColor.RED: [],
+	FruitColor.GREEN: [],
+	FruitColor.BLUE: [],
+}
+
 enum FruitColor {RED, GREEN, BLUE}
 
 func _ready() -> void:
@@ -228,3 +234,27 @@ func _on_area_detection_body_entered(body: Node2D) -> void:
 		$Timer.start()
 	elif body.is_in_group("Checkpoint"):
 		prev_checkpoint_position = position
+		
+func add_key(color: FruitColor, id: String):
+	keys[color].append(id)		
+	
+func use_key(id: String):
+	for c in FruitColor.values():
+		keys[c].remove(id)
+		
+func has_key(id: String):
+	var exists = false
+	for c in FruitColor.values():
+		exists = exists || (id in keys[c])
+	return exists
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
