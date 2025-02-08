@@ -41,13 +41,13 @@ var isGrabbing = false
 
 var prev_checkpoint_position = Vector2(0, 0)
 
-var keys = {
-	FruitColor.RED: [],
-	FruitColor.GREEN: [],
-	FruitColor.BLUE: [],
-}
+var keys = []
 
 enum FruitColor {RED, GREEN, BLUE}
+
+const MIN_X_DISTANCE = 40
+const MIN_Y_DISTANCE = 5
+const FOLLOW_SPEED = 2.5
 
 func _ready() -> void:
 	prev_checkpoint_position = position
@@ -108,7 +108,8 @@ func _physics_process(delta):
 	move_and_slide()
 	if sign(velocity.x)<0: $AnimatedSprite2D.flip_h = true
 	elif sign(velocity.x)>0: $AnimatedSprite2D.flip_h = false
-
+	
+	update_follows(delta)
 
 func jump(delta):
 	velocity.y = -JUMP_HEIGHT * delta
@@ -234,21 +235,38 @@ func _on_area_detection_body_entered(body: Node2D) -> void:
 		$Timer.start()
 	elif body.is_in_group("Checkpoint"):
 		prev_checkpoint_position = position
+	elif body.is_in_group("Door"):
+		if has_key(body.id):
+			use_key(body.id)
+			get_tree().queue_delete(body)
 		
-func add_key(color: FruitColor, id: String):
-	keys[color].append(id)		
+func update_follows(delta: float):
+	var parent = self
+	for key in keys:
+		if abs(key.position.x - parent.position.x) > MIN_X_DISTANCE:
+			key.position.x = lerp(key.position.x, parent.position.x, delta*FOLLOW_SPEED)
+		if abs(key.position.y - parent.position.y) > MIN_Y_DISTANCE:
+			key.position.y = lerp(key.position.y, parent.position.y, delta*FOLLOW_SPEED)
+		parent = key
+		
+func add_key(key: Node2D):
+	keys.append(key)	
 	
 func use_key(id: String):
-	for c in FruitColor.values():
-		keys[c].remove(id)
+	var keys_to_delete = []
+	for key in keys:
+		if key.id == id:
+			keys_to_delete.append(key)
+	for key in keys_to_delete:
+		keys.erase(key)
+		get_tree().queue_delete(key)
 		
 func has_key(id: String):
 	var exists = false
-	for c in FruitColor.values():
-		exists = exists || (id in keys[c])
+	for key in keys:
+		exists = exists || key.id == id
 	return exists
-		
-		
+	
 		
 		
 		

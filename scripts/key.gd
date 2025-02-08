@@ -5,6 +5,8 @@ enum FruitColor {RED, GREEN, BLUE}
 @export var color : FruitColor
 @export var id : String
 
+var picked_up = false
+
 func update_color() -> void:
 	if color == FruitColor.RED:
 		pass
@@ -30,7 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if Engine.is_editor_hint():
 		return
 	if body.is_in_group("Player"):
-		body.add_key(color, id)
-		get_tree().queue_delete(self)
+		body.add_key(self)
+		picked_up = true
 		
 	

@@ -14,12 +14,13 @@ size = Vector2(18, 34)
 script = ExtResource("1_rik5d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -18)
 sprite_frames = ExtResource("2_att2a")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 16)
+position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_ho6aa")
 
 [node name="Timer" type="Timer" parent="."]
@@ -36,7 +37,7 @@ target_position = Vector2(13, 0)
 position = Vector2(5, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetection"]
-position = Vector2(-5, 0)
+position = Vector2(-5, -18)
 shape = SubResource("RectangleShape2D_t51ai")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
