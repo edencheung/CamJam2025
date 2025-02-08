@@ -355,7 +355,6 @@ tile_set = ExtResource("2_3mxnu")
 [node name="Climable" type="TileMapLayer" parent="." groups=["Climbable"]]
 z_index = -1
 position = Vector2(16, -24)
-tile_map_data = PackedByteArray("AAANAAMAAgAGAAsAAAANAAIAAgAGAAsAAAANAAEAAgAGAAsAAAANAAAAAgAGAAsAAAANAP//AgAGAAsAAAANAP7/AgAGAAsAAAANAAQAAgAGAAsAAAA=")
 tile_set = ExtResource("2_3mxnu")
 
 [node name="Fruit" parent="." instance=ExtResource("7_x4mgr")]
@@ -387,3 +386,5 @@ self_modulate = Color(0.4, 1, 0.396078, 1)
 position = Vector2(-80, 0)
 tile_map_data = PackedByteArray("AAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAA=")
 tile_set = ExtResource("2_3mxnu")
+
+[node name="Red" type="TileMapLayer" parent="Node2D"]
