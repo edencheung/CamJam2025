@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://b08u4cm53v1pm"]
+[gd_scene load_steps=10 format=4 uid="uid://b08u4cm53v1pm"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_8cohf"]
 [ext_resource type="PackedScene" uid="uid://df8dh38cfnmmq" path="res://scenes/player.tscn" id="1_gkai8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://mip3orflxbmu" path="res://sprites/environment_sheet.png" id="3_gf3pv"]
 [ext_resource type="PackedScene" uid="uid://c2q4vjm1gg1w4" path="res://scenes/colored.tscn" id="3_jlcot"]
 [ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="4_pk6rt"]
+[ext_resource type="PackedScene" path="res://scenes/fruit.tscn" id="7_x4mgr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tjd2y"]
 texture = ExtResource("3_gf3pv")
@@ -219,7 +220,7 @@ script = ExtResource("1_8cohf")
 
 [node name="player" parent="." instance=ExtResource("1_gkai8")]
 z_index = 10
-position = Vector2(16, -112)
+position = Vector2(16, -88)
 scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -249,3 +250,6 @@ position = Vector2(7, -8)
 [node name="Climable" type="TileMapLayer" parent="." groups=["Climbable"]]
 tile_map_data = PackedByteArray("AAAGAPz/AgAAAAUAAAAGAP3/AgAAAAUAAAAGAP7/AgAAAAYAAAAGAPv/AgAAAAUAAAAGAPn/AgAAAAUAAAAGAPr/AgAAAAUAAAAGAPb/AgAAAAQAAAAGAPf/AgAAAAUAAAAGAPj/AgAAAAUAAAA=")
 tile_set = ExtResource("2_3mxnu")
+
+[node name="Fruit" parent="." instance=ExtResource("7_x4mgr")]
+position = Vector2(144, -80)
