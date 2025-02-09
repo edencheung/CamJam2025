@@ -22,8 +22,8 @@ func _process(delta):
 		dest = randomOffset()
 		offset = Vector2.ZERO.lerp(dest, 0.5)
 
-func shake():
-	shake_strength = randomStrength
+func shake(strength = randomStrength):
+	shake_strength = strength
 	
 func randomOffset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strength,shake_strength), rng.randf_range(-shake_strength,shake_strength))

@@ -87,25 +87,25 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="RedCounter" type="Label" parent="Counters"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
-text = "3
-"
+text = "10"
 
 [node name="GreenCounter" type="Label" parent="Counters"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
-text = "3
-"
+text = "10"
 
 [node name="BlueCounter" type="Label" parent="Counters"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
-text = "3
-"
+text = "10"
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
 anchors_preset = 15

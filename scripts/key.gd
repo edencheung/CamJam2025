@@ -7,17 +7,13 @@ enum FruitColor {RED, GREEN, BLUE}
 
 var picked_up = false
 
-var red_texture = preload("res://sprites/red_sprite_sheet.png")
-var green_texture = preload("res://sprites/green_sprite_sheet.png")
-var blue_texture = preload("res://sprites/yellow_sprite_sheet.png")
-
 func update_color() -> void:
 	if color == FruitColor.RED:
-		$Sprite2D.texture.atlas = red_texture
+		$AnimatedSprite2D.play("red")
 	elif color == FruitColor.GREEN:
-		$Sprite2D.texture.atlas = green_texture
+		$AnimatedSprite2D.play("green")
 	elif color == FruitColor.BLUE:
-		$Sprite2D.texture.atlas = blue_texture
+		$AnimatedSprite2D.play("blue")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,7 +26,7 @@ func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		update_color()
 	else:
-		$Sprite2D.scale = Vector2(sin(time*3.14), 1)
+		$AnimatedSprite2D.scale = Vector2(sin(time*3.14), 1)
 		
 func _on_body_entered(body: Node2D) -> void:
 	if Engine.is_editor_hint():
@@ -42,3 +38,5 @@ func _on_body_entered(body: Node2D) -> void:
 		picked_up = true
 		
 	
+func set_opacity(opacity: float):
+	$AnimatedSprite2D.self_modulate.a = opacity

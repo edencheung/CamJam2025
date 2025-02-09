@@ -247,7 +247,7 @@ func _on_area_detection_body_entered(body: Node2D) -> void:
 	elif body.is_in_group("Door"):
 		if has_key(body.id):
 			use_key(body.id)
-			get_tree().queue_delete(body)
+			body.open()
 
 func change_color(color: FruitColor) -> void:
 	current_color = color
