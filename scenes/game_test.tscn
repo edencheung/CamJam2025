@@ -1,23 +1,24 @@
-[gd_scene load_steps=22 format=4 uid="uid://cvqaqgrxvsof8"]
+[gd_scene load_steps=23 format=4 uid="uid://cvqaqgrxvsof8"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_6h6vw"]
 [ext_resource type="PackedScene" uid="uid://df8dh38cfnmmq" path="res://scenes/player.tscn" id="2_vos1w"]
-[ext_resource type="TileSet" uid="uid://bgkvo5j7uhu0k" path="res://tilesets/rock_tileset.tres" id="3_bplof"]
+[ext_resource type="TileSet" uid="uid://cwaudtun02h4f" path="res://tilesets/rock_tileset.tres" id="3_bplof"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_d0c5v"]
-[ext_resource type="TileSet" uid="uid://cc0j0hn676q4a" path="res://tilesets/climable_blue.tres" id="5_1fgee"]
-[ext_resource type="TileSet" uid="uid://dbxygj4uh1mke" path="res://tilesets/climable.tres" id="5_npwun"]
+[ext_resource type="TileSet" uid="uid://cnhx5honsll8m" path="res://tilesets/climable_blue.tres" id="5_1fgee"]
+[ext_resource type="TileSet" uid="uid://fvlyqybr4af6" path="res://tilesets/climable.tres" id="5_npwun"]
 [ext_resource type="PackedScene" uid="uid://b5r3dms04q7rm" path="res://scenes/hud.tscn" id="5_ywvec"]
 [ext_resource type="PackedScene" uid="uid://f1ksx4icru87" path="res://scenes/fruit.tscn" id="6_cbpyj"]
 [ext_resource type="Script" path="res://scripts/colored-tiles-manager.gd" id="7_5lwi6"]
-[ext_resource type="TileSet" uid="uid://caslnswsvnuj" path="res://tilesets/spike_tileset_green.tres" id="7_psj3h"]
-[ext_resource type="TileSet" uid="uid://c07a65knd2c53" path="res://tilesets/spike_tileset_red.tres" id="7_re2ao"]
+[ext_resource type="TileSet" uid="uid://dhbo06auy3in1" path="res://tilesets/spike_tileset_green.tres" id="7_psj3h"]
+[ext_resource type="TileSet" uid="uid://b7sgehdk7psne" path="res://tilesets/spike_tileset_red.tres" id="7_re2ao"]
 [ext_resource type="TileSet" uid="uid://dc1tktuuwqu2m" path="res://tilesets/spike_tileset.tres" id="7_xy67j"]
-[ext_resource type="TileSet" uid="uid://cisindd2g5xno" path="res://tilesets/rock_tileset_green.tres" id="9_hmnq4"]
-[ext_resource type="TileSet" uid="uid://dismhjxhhxd6" path="res://tilesets/rock_tileset_red.tres" id="9_rewrt"]
-[ext_resource type="TileSet" uid="uid://ux4xhmdlja1u" path="res://tilesets/rock_tileset_blue.tres" id="10_enxoc"]
-[ext_resource type="TileSet" uid="uid://bo0tdpoev8du3" path="res://tilesets/climable_red.tres" id="11_ye3lv"]
-[ext_resource type="TileSet" uid="uid://lvwadyxpw0hd" path="res://tilesets/spike_tileset_blue.tres" id="12_6uagh"]
-[ext_resource type="TileSet" uid="uid://18k4fshdmol6" path="res://tilesets/climable_green.tres" id="15_ivxxw"]
+[ext_resource type="TileSet" uid="uid://jwlwolytgdp8" path="res://tilesets/rock_tileset_green.tres" id="9_hmnq4"]
+[ext_resource type="TileSet" uid="uid://dyhrkt1rfvr3o" path="res://tilesets/rock_tileset_red.tres" id="9_rewrt"]
+[ext_resource type="TileSet" uid="uid://dfcasmiqjmv6t" path="res://tilesets/rock_tileset_blue.tres" id="10_enxoc"]
+[ext_resource type="TileSet" uid="uid://bb2mti84y07p5" path="res://tilesets/climable_red.tres" id="11_ye3lv"]
+[ext_resource type="TileSet" uid="uid://iqi16dy4sepa" path="res://tilesets/spike_tileset_blue.tres" id="12_6uagh"]
+[ext_resource type="TileSet" uid="uid://vmocxphg2y3g" path="res://tilesets/climable_green.tres" id="15_ivxxw"]
+[ext_resource type="PackedScene" uid="uid://ce5drc1x3lejo" path="res://scenes/checkpoint.tscn" id="20_c5ak6"]
 [ext_resource type="Texture2D" uid="uid://mip3orflxbmu" path="res://sprites/environment_sheet.png" id="21_wxrwp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hprc5"]
@@ -66,7 +67,7 @@ script = ExtResource("1_6h6vw")
 
 [node name="player" parent="." instance=ExtResource("2_vos1w")]
 z_index = 10
-position = Vector2(-8, -26)
+position = Vector2(952, -20)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(1, -5)
@@ -150,3 +151,6 @@ tile_map_data = PackedByteArray("AAAIAPz/AAACAAoAAAAKAPz/AAACAAoAAAD9//7/AAADAAs
 tile_set = SubResource("TileSet_2eiic")
 
 [node name="Lights" type="Node2D" parent="."]
+
+[node name="Checkpoint" parent="." instance=ExtResource("20_c5ak6")]
+position = Vector2(1022, -38)

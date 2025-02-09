@@ -1,28 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ce5drc1x3lejo"]
 
+[ext_resource type="Script" path="res://scripts/checkpoint.gd" id="1_4si18"]
 [ext_resource type="Texture2D" uid="uid://mip3orflxbmu" path="res://sprites/environment_sheet.png" id="1_283mf"]
-
-[sub_resource type="GDScript" id="GDScript_ciwaw"]
-script/source = "extends Area2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
-var activated = false	
-	
-func activate_checkpoint():
-	if activated: 
-		return
-	activated = true
-	$AnimationPlayer.play(\"lights_on\")
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3qq8"]
 size = Vector2(64, 64)
@@ -74,11 +53,11 @@ _data = {
 "lights_on": SubResource("Animation_h2pl2")
 }
 
-[node name="Checkpoint" type="Area2D"]
+[node name="Checkpoint" type="Area2D" groups=["Checkpoint"]]
 position = Vector2(1, 0)
-script = SubResource("GDScript_ciwaw")
+script = ExtResource("1_4si18")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Checkpoint"]]
 shape = SubResource("RectangleShape2D_u3qq8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -94,3 +73,5 @@ texture = SubResource("GradientTexture2D_gnyc5")
 libraries = {
 "": SubResource("AnimationLibrary_0bpc6")
 }
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
