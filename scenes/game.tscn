@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://b08u4cm53v1pm"]
+[gd_scene load_steps=29 format=4 uid="uid://b08u4cm53v1pm"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_8cohf"]
 [ext_resource type="PackedScene" uid="uid://df8dh38cfnmmq" path="res://scenes/player.tscn" id="1_gkai8"]
@@ -21,7 +21,7 @@
 [ext_resource type="TileSet" uid="uid://dhbo06auy3in1" path="res://tilesets/spike_tileset_green.tres" id="18_pygb1"]
 [ext_resource type="TileSet" uid="uid://vmocxphg2y3g" path="res://tilesets/climable_green.tres" id="19_4bt7g"]
 [ext_resource type="PackedScene" uid="uid://ce5drc1x3lejo" path="res://scenes/checkpoint.tscn" id="22_4vpei"]
-[ext_resource type="Texture2D" uid="uid://cetawkgqi5ufo" path="res://sprites/background_better.png" id="22_5pke4"]
+[ext_resource type="Texture2D" uid="uid://b6qypa0ks21iu" path="res://sprites/background_combined.png" id="22_jgiut"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0j6cy"]
 
@@ -163,13 +163,6 @@ light_mask = 4
 visibility_layer = 4
 z_index = 10
 material = SubResource("CanvasItemMaterial_0j6cy")
-
-[node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2(1, -5)
-zoom = Vector2(1.5, 1.5)
-position_smoothing_enabled = true
-position_smoothing_speed = 4.0
-script = ExtResource("3_ndult")
 
 [node name="HalfPlatforms" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -425,5 +418,16 @@ Press 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(2270.25, -2171)
 shape = SubResource("RectangleShape2D_2eciv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_speed = 4.0
+script = ExtResource("3_ndult")
+
+[node name="BackgroundCombined" type="Sprite2D" parent="Camera2D"]
+z_index = -100
+position = Vector2(49.9999, -34)
+scale = Vector2(0.612705, 0.612705)
+texture = ExtResource("22_jgiut")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

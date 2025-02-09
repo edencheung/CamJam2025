@@ -21,6 +21,8 @@ func _process(delta):
 		
 		dest = randomOffset()
 		offset = Vector2.ZERO.lerp(dest, 0.5)
+	self.position = self.position.lerp($"../player".position, 10 * delta)
+		
 
 func shake(strength = randomStrength):
 	shake_strength = strength

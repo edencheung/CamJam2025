@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 				platformController.reset()
 				change_color(color)
 			else:
-				$player/Camera2D.shake(10)
+				$Camera2D.shake(10)
 				
 	
 			

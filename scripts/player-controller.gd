@@ -249,7 +249,7 @@ func _on_area_detection_body_entered(body: Node2D) -> void:
 			animated_sprite_2d.play("die")
 			velocity = Vector2.ZERO
 			$Timer.start()
-			$Camera2D.shake()
+			$"../Camera2D".shake()
 	elif body.is_in_group("Door"):
 		if has_key(body.id):
 			use_key(body.id)
