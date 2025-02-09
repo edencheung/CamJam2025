@@ -12,15 +12,27 @@ var current_color = null
 
 @onready var platformController = $ColoredPlatforms
 
+var light_scene = preload("res://scenes/point_light_2d.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for child in get_children():
 		if child.is_in_group('Key'):
 			child.set_opacity(0.2)
 			
-	#for tilemap in $Decor.get_children():
-		#for tile in tilemap.get_used_cells():
-			#ptile)
+	for tilemap in $Decor.get_children():
+		for tile in tilemap.get_used_cells():
+			var tile_data = tilemap.get_cell_tile_data(tile)
+			var lamp_type = tile_data.get_custom_data("lamp_type")
+			var local_pos = tilemap.map_to_local(tile)
+			var global_pos = tilemap.to_global(local_pos)
+			if lamp_type == "2":
+				global_pos.y -= 64
+			elif lamp_type == "3":
+				global_pos.y -= 32
+			var dup = light_scene.instantiate()
+			$Lights.call_deferred("add_child", dup)
+			dup.position = global_pos
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,6 +56,8 @@ func change_color(color: FruitColor):
 	$HUD.play_animation(color)
 	$player.change_color(color)
 	$player.eat_fruit(color)
+	for light in $Lights.get_children():
+		light.setColor(color)
 	for child in get_children():
 		if child.is_in_group('Key'):
 			if child.color == color:
