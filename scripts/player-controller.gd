@@ -55,6 +55,7 @@ var time = 0
 func _ready() -> void:
 	#var file = FileAccess.open(save_path, FileAccess.WRITE)
 	#file.store_var(Vector2(0, 0))
+	
 	if not FileAccess.file_exists(save_path):
 		return
 	var file = FileAccess.open(save_path, FileAccess.READ)
