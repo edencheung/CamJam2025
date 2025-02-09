@@ -53,8 +53,9 @@ const FOLLOW_SPEED = 2.5
 var time = 0
 
 func _ready() -> void:
-	#var file = FileAccess.open(save_path, FileAccess.WRITE)
-	#file.store_var(Vector2(0, 0))
+	var file1 = FileAccess.open(save_path, FileAccess.WRITE)
+	file1.store_var(Vector2(0, 0))
+	return
 	
 	if not FileAccess.file_exists(save_path):
 		return
