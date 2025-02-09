@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://mip3orflxbmu" path="res://sprites/environment_sheet.png" id="3_gf3pv"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_ndult"]
 [ext_resource type="TileSet" uid="uid://bgkvo5j7uhu0k" path="res://tilesets/rock_tileset.tres" id="3_xwplv"]
-[ext_resource type="PackedScene" uid="uid://ci5yxk18p3j7n" path="res://scenes/hud.tscn" id="4_pk6rt"]
+[ext_resource type="PackedScene" uid="uid://b5r3dms04q7rm" path="res://scenes/hud.tscn" id="4_pk6rt"]
 [ext_resource type="PackedScene" uid="uid://co25refev5cj1" path="res://scenes/door.tscn" id="7_qp3xs"]
 [ext_resource type="PackedScene" uid="uid://b3h8fuhfp6uaw" path="res://scenes/key.tscn" id="8_rixe4"]
 [ext_resource type="PackedScene" uid="uid://f1ksx4icru87" path="res://scenes/fruit.tscn" id="9_apwnq"]
