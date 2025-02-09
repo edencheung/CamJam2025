@@ -24,6 +24,7 @@ func _ready() -> void:
 		for tile in tilemap.get_used_cells():
 			var tile_data = tilemap.get_cell_tile_data(tile)
 			var lamp_type = tile_data.get_custom_data("lamp_type")
+			if lamp_type == null: continue
 			var local_pos = tilemap.map_to_local(tile)
 			var global_pos = tilemap.to_global(local_pos)
 			if lamp_type == "2":
@@ -37,18 +38,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if (Input.is_action_just_pressed("change_red") or
-		Input.is_action_just_pressed("change_blue") or	
-		Input.is_action_just_pressed("change_green")):
-		platformController.reset()
 
 	for color in FruitColor.values():
 		if Input.is_action_just_pressed("change_%s" % [fruit_color_to_string[color]]):
 			if $HUD.get_counter(color) > 0 and current_color != color:
 				current_color = color
+				platformController.reset()
 				change_color(color)
 			else:
 				$player/Camera2D.shake(10)
+				
+	
 			
 func change_color(color: FruitColor):
 	$HUD.decrement_counter(color)

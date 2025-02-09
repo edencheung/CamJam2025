@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvltrfcb8vchp"
-path="res://.godot/imported/L 1.png-634032a8c8ffbb646038fec28956edc3.ctex"
+uid="uid://bptxitf0dgqpk"
+path="res://.godot/imported/environment_sheet_aseprite.png-1c72dae081339be429a365eb1817de29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/backgrounds/1/Night/L 1.png"
-dest_files=["res://.godot/imported/L 1.png-634032a8c8ffbb646038fec28956edc3.ctex"]
+source_file="res://sprites/aseprites in progress/environment_sheet_aseprite.png"
+dest_files=["res://.godot/imported/environment_sheet_aseprite.png-1c72dae081339be429a365eb1817de29.ctex"]
 
 [params]
 

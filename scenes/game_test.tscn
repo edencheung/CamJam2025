@@ -53,6 +53,7 @@ texture_region_size = Vector2i(32, 32)
 10:13/0/texture_origin = Vector2i(0, 16)
 11:11/size_in_atlas = Vector2i(2, 3)
 11:11/0 = 0
+11:11/0/custom_data_0 = "3"
 
 [sub_resource type="TileSet" id="TileSet_2eiic"]
 tile_size = Vector2i(32, 32)
@@ -145,7 +146,7 @@ position = Vector2(0, 8)
 
 [node name="NeutralDecor" type="TileMapLayer" parent="Decor"]
 position = Vector2(48, 24)
-tile_map_data = PackedByteArray("AAAIAPz/AAACAAoAAAAKAPz/AAACAAoAAAD9//7/AAADAAsAAAD9//v/AAABAAoAAAA=")
+tile_map_data = PackedByteArray("AAAIAPz/AAACAAoAAAAKAPz/AAACAAoAAAD9//7/AAADAAsAAAD9//v/AAABAAoAAAAFAPv/AAALAAsAAAACAPj/AAALAAsAAAAJAPf/AAALAAsAAAANAPr/AAALAAsAAAA=")
 tile_set = SubResource("TileSet_2eiic")
 
 [node name="Lights" type="Node2D" parent="."]
