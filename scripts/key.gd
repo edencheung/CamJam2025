@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		update_color()
 	else:
-		$Sprite2D.scale = Vector2(0.5*(1+sin(time*3.14)), 1)
+		$Sprite2D.scale = Vector2(sin(time*3.14), 1)
 		
 func _on_body_entered(body: Node2D) -> void:
 	if Engine.is_editor_hint():
