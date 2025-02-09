@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bra3nvbkcclgd"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -978.0
+offset_top = -752.0
+offset_right = -938.0
+offset_bottom = -712.0
+scale = Vector2(70.0406, 43.966)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.521141, 0.521141, 0.521141, 1)

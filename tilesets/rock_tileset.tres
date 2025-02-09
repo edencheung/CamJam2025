@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cwaudtun02h4f"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bgkvo5j7uhu0k"]
 
 [ext_resource type="Texture2D" uid="uid://mip3orflxbmu" path="res://sprites/environment_sheet.png" id="1_nl167"]
 
@@ -276,14 +276,24 @@ texture_region_size = Vector2i(32, 32)
 11:11/0 = 0
 11:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 26, -8, 4, 22, -4, 22, -26, -8)
 6:5/0 = 0
+6:5/0/terrain_set = 0
+6:5/0/terrain = 1
 6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 4, 16, 4, 16, 14, -16, 14)
 6:5/0/physics_layer_0/polygon_0/one_way = true
+6:5/0/terrains_peering_bit/right_side = 1
 7:5/0 = 0
+7:5/0/terrain_set = 0
+7:5/0/terrain = 1
 7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 4, 16, 4, 16, 14, -16, 14)
 7:5/0/physics_layer_0/polygon_0/one_way = true
+7:5/0/terrains_peering_bit/right_side = 1
+7:5/0/terrains_peering_bit/left_side = 1
 8:5/0 = 0
+8:5/0/terrain_set = 0
+8:5/0/terrain = 1
 8:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 4, 16, 4, 16, 14, -16, 14)
 8:5/0/physics_layer_0/polygon_0/one_way = true
+8:5/0/terrains_peering_bit/left_side = 1
 
 [resource]
 tile_size = Vector2i(32, 32)
@@ -291,4 +301,6 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Walls"
 terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
+terrain_set_0/terrain_1/name = "Half_Plats"
+terrain_set_0/terrain_1/color = Color(0.637547, 0.428233, 0.803564, 1)
 sources/0 = SubResource("TileSetAtlasSource_xi3f6")

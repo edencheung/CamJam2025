@@ -16,15 +16,15 @@ script = ExtResource("1_rik5d")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -18)
 sprite_frames = ExtResource("2_att2a")
-animation = &"idle"
+animation = &"sliding"
 autoplay = "idle"
+frame_progress = 0.498499
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_ho6aa")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
 one_shot = true
 
 [node name="Rotatable" type="Node2D" parent="."]

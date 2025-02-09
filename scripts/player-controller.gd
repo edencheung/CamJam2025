@@ -16,7 +16,7 @@ const WALL_HORIZONTAL_TIME = 30
 const GRAVITY = 3000
 const WEAK_GRAVITY = 1000
 const DASH_SPEED = 20000
-const CLIMB_SPEED = 20000
+const CLIMB_SPEED = 15000
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 #@onready var ray_cast = $RayCast2D
@@ -38,6 +38,7 @@ var trail = false
 var isDashing = false
 var hasDashed = false
 var isGrabbing = false
+var isDead = false
 
 var prev_checkpoint_position = Vector2(0, 0)
 
@@ -74,7 +75,7 @@ func _physics_process(delta):
 	else:
 		wallJumpTimer += 1
 	
-	if !canJump:
+	if !canJump and !isDead:
 		if !wall_sliding:
 			if velocity.y >= 0:
 				$AnimatedSprite2D.play("fall")
@@ -122,6 +123,7 @@ func wallJump(delta):
 	$WallCast.scale.x = -$WallCast.scale.x
 
 func wallSlide(delta):
+	if isDead: return
 	if !canJump:
 		if $WallCast.is_colliding() and $WallCast.get_collider().is_in_group("Climbable"):
 			coyoteWallTimer = 0
@@ -164,6 +166,7 @@ func setJumpHeight(delta):
 			velocity.y = -MIN_JUMP_HEIGHT * delta
 
 func horizontalMovement(delta):
+	if isDead: return
 	if Input.is_action_pressed("move_right"):
 		if $WallCast.is_colliding():
 			#await (get_tree().create_timer(0.1),"timeout")
@@ -218,13 +221,14 @@ func dash(delta):
 
 func getInputAxis():
 	input_axis = Vector2.ZERO
+	if isDead: return input_axis
 	input_axis.x = int(Input.is_action_pressed("move_left")) - int(Input.is_action_pressed("move_right"))
 	input_axis.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
 	input_axis = input_axis.normalized()
 
 func _on_timer_timeout():
-	Engine.time_scale = 1
 	get_tree().reload_current_scene()
+	# TODO: reload to checkpoint
 	
 func add_fruit(fruit: Node2D) -> void:
 	$"../HUD".increment_counter(fruit.color)
@@ -232,9 +236,11 @@ func add_fruit(fruit: Node2D) -> void:
 
 func _on_area_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Danger"):
-		Engine.time_scale = 0.3
-		$CollisionShape2D.queue_free()
+		isDead = true
+		animated_sprite_2d.play("die")
+		velocity = Vector2.ZERO
 		$Timer.start()
+		$Camera2D.shake()
 	elif body.is_in_group("Checkpoint"):
 		prev_checkpoint_position = position
 	elif body.is_in_group("Door"):

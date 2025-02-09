@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3uulk6pfljhf"]
+
+[ext_resource type="Texture2D" uid="uid://ce3ry5f3ha0f8" path="res://sprites/EFXSes9UCfsyRVoNeQ2ZTB-1200-80.png" id="1_v7hwf"]
+[ext_resource type="Shader" path="res://shaders/masking_shader.gdshader" id="2_gi8mk"]
+[ext_resource type="Texture2D" uid="uid://bd8p15y0uuhf2" path="res://sprites/big_circle.png" id="3_ppwfn"]
+[ext_resource type="Texture2D" uid="uid://216ffkihxtd7" path="res://sprites/rtlynwv7bmo61.png" id="4_g600x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nb3uc"]
+shader = ExtResource("2_gi8mk")
+
+[node name="ColorRect" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+color = Color(0.552956, 0.552956, 0.552956, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="mask" type="Sprite2D" parent="Control"]
+material = SubResource("ShaderMaterial_nb3uc")
+position = Vector2(-262, 10)
+texture = ExtResource("3_ppwfn")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
+layout_mode = 0
+offset_left = -1231.0
+offset_top = -113.0
+offset_right = -719.0
+offset_bottom = 399.0
+
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Open" type="Sprite2D" parent="Control/SubViewportContainer/SubViewport"]
+position = Vector2(556, 303)
+texture = ExtResource("1_v7hwf")
+
+[node name="Closed" type="Sprite2D" parent="."]
+position = Vector2(752, 333)
+scale = Vector2(0.332071, 0.351292)
+texture = ExtResource("4_g600x")
