@@ -16,9 +16,9 @@ script = ExtResource("1_rik5d")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -18)
 sprite_frames = ExtResource("2_att2a")
-animation = &"sliding"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.498499
+frame_progress = 0.340962
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
