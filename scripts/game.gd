@@ -38,15 +38,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if (Input.is_action_just_pressed("change_red") or
-		Input.is_action_just_pressed("change_blue") or	
-		Input.is_action_just_pressed("change_green")):
-		platformController.reset()
 
 	for color in FruitColor.values():
 		if Input.is_action_just_pressed("change_%s" % [fruit_color_to_string[color]]):
 			if $HUD.get_counter(color) > 0 and current_color != color:
 				current_color = color
+				platformController.reset()
 				change_color(color)
 			else:
 				$player/Camera2D.shake(10)
