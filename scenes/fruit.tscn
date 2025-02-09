@@ -93,6 +93,6 @@ shape = SubResource("RectangleShape2D_xgblu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6k13m")
 animation = &"red_canned"
-frame_progress = 0.394784
+frame_progress = 0.242204
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://bgkvo5j7uhu0k" path="res://tilesets/rock_tileset.tres" id="3_bplof"]
 [ext_resource type="TileSet" uid="uid://cc0j0hn676q4a" path="res://tilesets/climable_blue.tres" id="5_1fgee"]
 [ext_resource type="TileSet" uid="uid://dbxygj4uh1mke" path="res://tilesets/climable.tres" id="5_npwun"]
-[ext_resource type="PackedScene" uid="uid://ci5yxk18p3j7n" path="res://scenes/hud.tscn" id="5_ywvec"]
+[ext_resource type="PackedScene" uid="uid://b5r3dms04q7rm" path="res://scenes/hud.tscn" id="5_ywvec"]
 [ext_resource type="PackedScene" uid="uid://f1ksx4icru87" path="res://scenes/fruit.tscn" id="6_cbpyj"]
 [ext_resource type="Script" path="res://scripts/colored-tiles-manager.gd" id="7_5lwi6"]
 [ext_resource type="TileSet" uid="uid://caslnswsvnuj" path="res://tilesets/spike_tileset_green.tres" id="7_psj3h"]

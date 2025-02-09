@@ -1,74 +1,38 @@
-[gd_scene load_steps=13 format=3 uid="uid://b5r3dms04q7rm"]
+[gd_scene load_steps=10 format=3 uid="uid://b5r3dms04q7rm"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_ooh57"]
 
-[sub_resource type="Gradient" id="Gradient_cnjqy"]
+[sub_resource type="Gradient" id="Gradient_bdpu5"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0y07t"]
-gradient = SubResource("Gradient_cnjqy")
+gradient = SubResource("Gradient_bdpu5")
 width = 32
 
-[sub_resource type="Gradient" id="Gradient_q3s1s"]
+[sub_resource type="Gradient" id="Gradient_weat3"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1ce8i"]
-gradient = SubResource("Gradient_q3s1s")
+gradient = SubResource("Gradient_weat3")
 width = 32
 fill_from = Vector2(1, 1)
 fill_to = Vector2(0, 1)
 
-[sub_resource type="Gradient" id="Gradient_wkcgs"]
+[sub_resource type="Gradient" id="Gradient_7irqm"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4cjyp"]
-gradient = SubResource("Gradient_wkcgs")
+gradient = SubResource("Gradient_7irqm")
 height = 32
 fill_from = Vector2(1, 1)
 
-[sub_resource type="Gradient" id="Gradient_a3oie"]
+[sub_resource type="Gradient" id="Gradient_lq38k"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vyxpp"]
-gradient = SubResource("Gradient_a3oie")
+gradient = SubResource("Gradient_lq38k")
 height = 32
 fill_to = Vector2(0, 1)
-
-[sub_resource type="Animation" id="Animation_x6hsj"]
-resource_name = "enlarge"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ReferenceRect:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_k8mtp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ReferenceRect:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sdvib"]
-_data = {
-"RESET": SubResource("Animation_k8mtp"),
-"enlarge": SubResource("Animation_x6hsj")
-}
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_ooh57")
@@ -151,8 +115,3 @@ offset_top = -32.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("GradientTexture2D_vyxpp")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_sdvib")
-}
