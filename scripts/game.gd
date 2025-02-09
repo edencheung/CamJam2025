@@ -17,6 +17,10 @@ func _ready() -> void:
 	for child in get_children():
 		if child.is_in_group('Key'):
 			child.set_opacity(0.2)
+			
+	#for tilemap in $Decor.get_children():
+		#for tile in tilemap.get_used_cells():
+			#ptile)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
