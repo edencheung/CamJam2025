@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://ojh8hul2e52h"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://ddxef6kltj2e5"]
 
 [ext_resource type="Texture2D" uid="uid://6nduegmfnagt" path="res://sprites/red_sprite_sheet.png" id="1_4sjbk"]
 
@@ -257,6 +257,7 @@ texture_region_size = Vector2i(32, 32)
 2:10/0/custom_data_0 = true
 4:11/size_in_atlas = Vector2i(2, 3)
 4:11/0 = 0
+3:10/0 = 0
 
 [resource]
 tile_size = Vector2i(32, 32)

@@ -50,11 +50,17 @@ var current_color
 const MIN_X_DISTANCE = 40
 const MIN_Y_DISTANCE = 5
 const FOLLOW_SPEED = 2.5
+var time = 0
 
 func _ready() -> void:
-	prev_checkpoint_position = position
+	if not FileAccess.file_exists(save_path):
+		return
+	var file = FileAccess.open(save_path, FileAccess.READ)
+	prev_checkpoint_position = file.get_var()
+	position = prev_checkpoint_position
 
 func _physics_process(delta):
+	time += delta
 	if !isDashing:
 		if velocity.y < MAX_FALL_SPEED:
 			velocity.y += GRAVITY * delta
@@ -226,9 +232,11 @@ func getInputAxis():
 	input_axis.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
 	input_axis = input_axis.normalized()
 
+var save_path = "user://position.save"
 func _on_timer_timeout():
-	get_tree().reload_current_scene()
-	# TODO: reload to checkpoint
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_var(prev_checkpoint_position)
+	get_tree().reload_current_scene()	
 	
 func add_fruit(fruit: Node2D) -> void:
 	$"../HUD".increment_counter(fruit.color)
@@ -241,13 +249,17 @@ func _on_area_detection_body_entered(body: Node2D) -> void:
 			animated_sprite_2d.play("die")
 			velocity = Vector2.ZERO
 			$Timer.start()
-			$Camera2D.shake()
-	elif body.is_in_group("Checkpoint"):
-		prev_checkpoint_position = position
+			$"../Camera2D".shake()
 	elif body.is_in_group("Door"):
 		if has_key(body.id):
 			use_key(body.id)
 			body.open()
+			
+func checkpoint_entered(checkpoint: Node2D) -> void:
+	prev_checkpoint_position = checkpoint.position
+	if time < 10:
+		return
+	_on_timer_timeout()
 
 func change_color(color: FruitColor) -> void:
 	current_color = color

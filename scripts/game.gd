@@ -23,6 +23,7 @@ func _ready() -> void:
 	for tilemap in $Decor.get_children():
 		for tile in tilemap.get_used_cells():
 			var tile_data = tilemap.get_cell_tile_data(tile)
+			if tile_data == null: continue
 			var lamp_type = tile_data.get_custom_data("lamp_type")
 			if lamp_type == null: continue
 			var local_pos = tilemap.map_to_local(tile)
@@ -46,7 +47,7 @@ func _process(delta: float) -> void:
 				platformController.reset()
 				change_color(color)
 			else:
-				$player/Camera2D.shake(10)
+				$Camera2D.shake(10)
 				
 	
 			
@@ -64,3 +65,8 @@ func change_color(color: FruitColor):
 				child.set_opacity(1)
 			else:
 				child.set_opacity(0.2)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		$HUD.play_win()

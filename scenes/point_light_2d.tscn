@@ -7,11 +7,11 @@ colors = PackedColorArray(1, 1, 1, 0.666667, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ggq1r"]
 gradient = SubResource("Gradient_g4c8q")
-width = 200
-height = 200
+width = 300
+height = 300
 fill = 1
 fill_from = Vector2(0.504274, 0.504274)
-fill_to = Vector2(1, 1)
+fill_to = Vector2(1, 0.5)
 
 [node name="PointLight2D" type="PointLight2D"]
 texture = SubResource("GradientTexture2D_ggq1r")
