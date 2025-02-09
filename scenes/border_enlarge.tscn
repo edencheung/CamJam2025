@@ -1,0 +1,132 @@
+[gd_scene load_steps=13 format=3 uid="uid://c0b5m6papho7j"]
+
+[ext_resource type="Script" path="res://scripts/border_enlarge.gd" id="1_p05c4"]
+
+[sub_resource type="Gradient" id="Gradient_cnjqy"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bk7la"]
+gradient = SubResource("Gradient_cnjqy")
+width = 32
+
+[sub_resource type="Gradient" id="Gradient_q3s1s"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wutba"]
+gradient = SubResource("Gradient_q3s1s")
+width = 32
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_wkcgs"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q66vp"]
+gradient = SubResource("Gradient_wkcgs")
+height = 32
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_a3oie"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3t7w7"]
+gradient = SubResource("Gradient_a3oie")
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_k8mtp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ReferenceRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_x6hsj"]
+resource_name = "enlarge"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ReferenceRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sdvib"]
+_data = {
+"RESET": SubResource("Animation_k8mtp"),
+"enlarge": SubResource("Animation_x6hsj")
+}
+
+[node name="BorderEnlarge" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p05c4")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Right" type="TextureRect" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_bk7la")
+
+[node name="Left" type="TextureRect" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 32.0
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_wutba")
+
+[node name="Top" type="TextureRect" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+texture = SubResource("GradientTexture2D_q66vp")
+
+[node name="Bottom" type="TextureRect" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_3t7w7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sdvib")
+}
