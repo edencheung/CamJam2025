@@ -48,7 +48,7 @@ animations = [{
 }]
 
 [node name="Key" type="Area2D" groups=["Key"]]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_et3hr")
 color = 2
 
@@ -60,6 +60,6 @@ shape = SubResource("RectangleShape2D_xgblu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ouafv")
 animation = &"blue"
-frame_progress = 0.281714
+frame_progress = 0.63041
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

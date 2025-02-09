@@ -17,6 +17,9 @@ func _ready() -> void:
 	for child in get_children():
 		if child.is_in_group('Key'):
 			child.set_opacity(0.2)
+			
+	for decor in $Decor:
+		for 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
