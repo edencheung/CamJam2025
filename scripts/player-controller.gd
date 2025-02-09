@@ -41,9 +41,10 @@ var isGrabbing = false
 
 var prev_checkpoint_position = Vector2(0, 0)
 
-var keys = []
+var followers = []
 
 enum FruitColor {RED, GREEN, BLUE}
+var current_color
 
 const MIN_X_DISTANCE = 40
 const MIN_Y_DISTANCE = 5
@@ -225,8 +226,9 @@ func _on_timer_timeout():
 	Engine.time_scale = 1
 	get_tree().reload_current_scene()
 	
-func add_fruit(color: FruitColor, is_packaged: bool) -> void:
-	$"../HUD".increment_counter(color)
+func add_fruit(fruit: Node2D) -> void:
+	$"../HUD".increment_counter(fruit.color)
+	followers.append(fruit)
 
 func _on_area_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Danger"):
@@ -241,17 +243,28 @@ func _on_area_detection_body_entered(body: Node2D) -> void:
 			get_tree().queue_delete(body)
 
 func change_color(color: FruitColor) -> void:
+	current_color = color
 	var keys_to_erase = []
-	for key in keys:
-		if key.color != color:
-			keys_to_erase.append(key)
+	for f in followers:
+		if f.is_in_group("Key") and f.color != color:
+			keys_to_erase.append(f)
 	for key in keys_to_erase:
-		keys.erase(key)
+		followers.erase(key)
 		key.picked_up = false
+
+func eat_fruit(color: FruitColor) -> void:
+	var fruit
+	for f in followers:
+		if f.is_in_group("Fruit") and f.color == color:
+			fruit = f
+			break
+	if fruit:
+		followers.erase(fruit)
+		get_tree().queue_delete(fruit)
 		
 func update_follows(delta: float):
 	var parent = self
-	for key in keys:
+	for key in followers:
 		if abs(key.position.x - parent.position.x) > MIN_X_DISTANCE:
 			key.position.x = lerp(key.position.x, parent.position.x, delta*FOLLOW_SPEED)
 		if abs(key.position.y - parent.position.y) > MIN_Y_DISTANCE:
@@ -259,21 +272,22 @@ func update_follows(delta: float):
 		parent = key
 		
 func add_key(key: Node2D):
-	keys.append(key)	
+	followers.append(key)	
 	
 func use_key(id: String):
 	var keys_to_delete = []
-	for key in keys:
-		if key.id == id:
+	for key in followers:
+		if key.is_in_group("Key") and key.id == id:
 			keys_to_delete.append(key)
 	for key in keys_to_delete:
-		keys.erase(key)
+		followers.erase(key)
 		get_tree().queue_delete(key)
 		
 func has_key(id: String):
 	var exists = false
-	for key in keys:
-		exists = exists || key.id == id
+	for key in followers:
+		if key.is_in_group("Key"):
+			exists = exists || key.id == id
 	return exists
 	
 		

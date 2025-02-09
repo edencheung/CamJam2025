@@ -10,7 +10,7 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xgblu"]
 size = Vector2(32, 32)
 
-[node name="Fruit" type="Area2D"]
+[node name="Fruit" type="Area2D" groups=["Fruit"]]
 script = ExtResource("1_p5lpc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
