@@ -20,7 +20,7 @@ func _ready():
 	else:
 		for elm in fruit_color_map.values():
 			for child in elm.get_children():
-				child.self_modulate.a = 0.3
+				child.self_modulate.a = 0
 				child.collision_enabled = false
 		
 
