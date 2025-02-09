@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("change_red") or
 		Input.is_action_just_pressed("change_blue") or
 		Input.is_action_just_pressed("change_green")):
-		$colored.reset()
+		$ColoredPlatforms.reset()
 
 	for color in FruitColor.values():
 		if Input.is_action_just_pressed("change_%s" % [fruit_color_to_string[color]]) and $HUD.get_counter(color) > 0:
@@ -26,7 +26,8 @@ func _process(delta: float) -> void:
 			
 func change_color(color: FruitColor):
 	$HUD.decrement_counter(color)
-	$colored.show_color(color)
+	$HUD.play_animation(color)
+	$ColoredPlatforms.show_color(color)
 	$player.change_color(color)
 	$player.eat_fruit(color)
 	for child in get_children():
