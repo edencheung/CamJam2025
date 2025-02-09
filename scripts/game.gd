@@ -28,6 +28,7 @@ func change_color(color: FruitColor):
 	$HUD.decrement_counter(color)
 	$colored.show_color(color)
 	$player.change_color(color)
+	$player.eat_fruit(color)
 	for child in get_children():
 		if child.is_in_group('Key'):
 			if child.color == color:

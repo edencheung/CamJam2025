@@ -5,6 +5,8 @@ enum FruitColor {RED, GREEN, BLUE}
 @export var color : FruitColor
 @export var is_packaged : bool = true
 
+var picked_up = false
+
 func update_color() -> void:
 	if not is_packaged:
 		if color == FruitColor.RED:
@@ -37,8 +39,10 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if Engine.is_editor_hint():
 		return
+	if picked_up: 
+		return
 	if body.is_in_group("Player"):
-		body.add_fruit(color, is_packaged)
-		get_tree().queue_delete(self)
+		body.add_fruit(self)
+		picked_up = true
 		
 	

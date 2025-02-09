@@ -37,7 +37,7 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	if picked_up: 
 		return
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and body.current_color == color:
 		body.add_key(self)
 		picked_up = true
 		
