@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://b08u4cm53v1pm"]
+[gd_scene load_steps=28 format=4 uid="uid://b08u4cm53v1pm"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_8cohf"]
 [ext_resource type="PackedScene" uid="uid://df8dh38cfnmmq" path="res://scenes/player.tscn" id="1_gkai8"]
@@ -21,6 +21,7 @@
 [ext_resource type="TileSet" uid="uid://dhbo06auy3in1" path="res://tilesets/spike_tileset_green.tres" id="18_pygb1"]
 [ext_resource type="TileSet" uid="uid://vmocxphg2y3g" path="res://tilesets/climable_green.tres" id="19_4bt7g"]
 [ext_resource type="PackedScene" uid="uid://ce5drc1x3lejo" path="res://scenes/checkpoint.tscn" id="22_4vpei"]
+[ext_resource type="Texture2D" uid="uid://cetawkgqi5ufo" path="res://sprites/background_better.png" id="22_5pke4"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0j6cy"]
 
@@ -352,3 +353,9 @@ scale = Vector2(1.5, 1.5)
 [node name="Checkpoint4" parent="." instance=ExtResource("22_4vpei")]
 position = Vector2(1483, -1896)
 scale = Vector2(1.5, 1.5)
+
+[node name="BackgroundBetter" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(1404.5, -1640.5)
+scale = Vector2(2.01, 2.01)
+texture = ExtResource("22_5pke4")
