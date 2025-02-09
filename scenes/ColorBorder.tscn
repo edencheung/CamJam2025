@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpbm7e4xnfbtg"]
+
+[sub_resource type="Animation" id="Animation_qblyt"]
+resource_name = "enlarge"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mefwh"]
+_data = {
+"enlarge": SubResource("Animation_qblyt")
+}
+
+[sub_resource type="Gradient" id="Gradient_3f7j0"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x2hcb"]
+gradient = SubResource("Gradient_3f7j0")
+fill_from = Vector2(0.764957, 0.482906)
+fill_to = Vector2(1, 0.478632)
+
+[node name="ColorBorder" type="CanvasLayer"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mefwh")
+}
+
+[node name="Border" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="TextureRect" parent="Border"]
+offset_left = 1086.0
+offset_right = 1150.0
+offset_bottom = 645.0
+texture = SubResource("GradientTexture2D_x2hcb")

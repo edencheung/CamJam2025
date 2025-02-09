@@ -1,22 +1,98 @@
-[gd_scene load_steps=5 format=3 uid="uid://f1ksx4icru87"]
+[gd_scene load_steps=12 format=3 uid="uid://f1ksx4icru87"]
 
 [ext_resource type="Script" path="res://scripts/fruit.gd" id="1_p5lpc"]
 [ext_resource type="Texture2D" uid="uid://dd7la31n8tked" path="res://sprites/fruit.png" id="1_saapn"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n8tdt"]
-atlas = ExtResource("1_saapn")
-region = Rect2(0, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://dp8j1m6dmo15g" path="res://sprites/canned_fruit.png" id="3_kdaj5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xgblu"]
 size = Vector2(32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x73i"]
+atlas = ExtResource("1_saapn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m27uh"]
+atlas = ExtResource("3_kdaj5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di3ps"]
+atlas = ExtResource("1_saapn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6ls4"]
+atlas = ExtResource("3_kdaj5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arnnq"]
+atlas = ExtResource("1_saapn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugsu4"]
+atlas = ExtResource("3_kdaj5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6k13m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x73i")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m27uh")
+}],
+"loop": true,
+"name": &"blue_canned",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di3ps")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6ls4")
+}],
+"loop": true,
+"name": &"green_canned",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arnnq")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugsu4")
+}],
+"loop": true,
+"name": &"red_canned",
+"speed": 5.0
+}]
+
 [node name="Fruit" type="Area2D" groups=["Fruit"]]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_p5lpc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_n8tdt")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_xgblu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6k13m")
+animation = &"red_canned"
+frame_progress = 0.394784
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

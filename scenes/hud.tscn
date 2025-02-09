@@ -1,6 +1,74 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5r3dms04q7rm"]
+[gd_scene load_steps=13 format=3 uid="uid://b5r3dms04q7rm"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_ooh57"]
+
+[sub_resource type="Gradient" id="Gradient_cnjqy"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0y07t"]
+gradient = SubResource("Gradient_cnjqy")
+width = 32
+
+[sub_resource type="Gradient" id="Gradient_q3s1s"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ce8i"]
+gradient = SubResource("Gradient_q3s1s")
+width = 32
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_wkcgs"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4cjyp"]
+gradient = SubResource("Gradient_wkcgs")
+height = 32
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_a3oie"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vyxpp"]
+gradient = SubResource("Gradient_a3oie")
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_x6hsj"]
+resource_name = "enlarge"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ReferenceRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k8mtp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ReferenceRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sdvib"]
+_data = {
+"RESET": SubResource("Animation_k8mtp"),
+"enlarge": SubResource("Animation_x6hsj")
+}
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_ooh57")
@@ -19,22 +87,72 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="RedCounter" type="Label" parent="Counters"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
-text = "3
-"
+text = "10"
 
 [node name="GreenCounter" type="Label" parent="Counters"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
-text = "3
-"
+text = "10"
 
 [node name="BlueCounter" type="Label" parent="Counters"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
-text = "3
-"
+text = "10"
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Right" type="TextureRect" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0y07t")
+
+[node name="Left" type="TextureRect" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 32.0
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_1ce8i")
+
+[node name="Top" type="TextureRect" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+texture = SubResource("GradientTexture2D_4cjyp")
+
+[node name="Bottom" type="TextureRect" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_vyxpp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sdvib")
+}
