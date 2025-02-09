@@ -236,11 +236,12 @@ func add_fruit(fruit: Node2D) -> void:
 
 func _on_area_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Danger"):
-		isDead = true
-		animated_sprite_2d.play("die")
-		velocity = Vector2.ZERO
-		$Timer.start()
-		$Camera2D.shake()
+		if !isDead:
+			isDead = true
+			animated_sprite_2d.play("die")
+			velocity = Vector2.ZERO
+			$Timer.start()
+			$Camera2D.shake()
 	elif body.is_in_group("Checkpoint"):
 		prev_checkpoint_position = position
 	elif body.is_in_group("Door"):
