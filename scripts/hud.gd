@@ -50,4 +50,31 @@ func play_animation(color: FruitColor) -> void:
 	get_tree().queue_delete(ani)
 	for rect in $ReferenceRect.get_children():
 		rect.texture.gradient.set_color(1, color_of[color])
-	
+
+func play_animation_c(color: Color) -> void:
+	var ani = BORDER_ENLARGE.instantiate()
+	add_child(ani)
+	ani.play_animation_c(color)
+	await get_tree().create_timer(0.5).timeout
+	get_tree().queue_delete(ani)
+	for rect in $ReferenceRect.get_children():
+		rect.texture.gradient.set_color(1, color)
+
+func get_color(val: float) -> Color:
+	var hue = 0 + (val)/10 * 0.8
+	print(hue)
+	var r = abs(hue * 6 - 3) - 1
+	var g = 2 - abs(hue * 6 - 2)
+	var b = 2 - abs(hue * 6 - 4)
+	r = min(max(r, 0), 1)
+	g = min(max(g, 0), 1)
+	b = min(max(b, 0), 1)
+	return Color(r, g, b, 1)
+
+func play_win() -> void:
+	var step = 0
+	while true:
+		var color = get_color(step % 10)
+		step += 1
+		play_animation_c(color)
+		await get_tree().create_timer(0.2).timeout

@@ -25,3 +25,9 @@ func play_animation(color: FruitColor) -> void:
 	await get_tree().create_timer(0.05).timeout
 	for rect in $ReferenceRect.get_children():
 		rect.texture.gradient.set_color(1, color_of[color])
+		
+func play_animation_c(color: Color) -> void:
+	$AnimationPlayer.play("enlarge")
+	await get_tree().create_timer(0.05).timeout
+	for rect in $ReferenceRect.get_children():
+		rect.texture.gradient.set_color(1, color)

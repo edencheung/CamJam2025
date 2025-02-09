@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://b08u4cm53v1pm"]
+[gd_scene load_steps=28 format=4 uid="uid://b08u4cm53v1pm"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_8cohf"]
 [ext_resource type="PackedScene" uid="uid://df8dh38cfnmmq" path="res://scenes/player.tscn" id="1_gkai8"]
@@ -150,7 +150,11 @@ custom_data_layer_0/name = "lamp_type"
 custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_o07fh")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2eciv"]
+size = Vector2(1163.5, 150)
+
 [node name="Game" type="Node2D"]
+position = Vector2(109, 47)
 script = ExtResource("1_8cohf")
 
 [node name="player" parent="." instance=ExtResource("1_gkai8")]
@@ -414,3 +418,11 @@ offset_bottom = -741.0
 text = "Another new flavor!
 Press 0
 "
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2270.25, -2171)
+shape = SubResource("RectangleShape2D_2eciv")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
