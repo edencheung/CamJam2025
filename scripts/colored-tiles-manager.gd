@@ -8,9 +8,21 @@ enum FruitColor {RED, GREEN, BLUE}
 	FruitColor.BLUE: $Blue
 }
 
+var is_master = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if is_master:
+		var dup = duplicate()
+		dup.is_master = false
+		get_parent().call_deferred("add_child", dup)
+		reset()
+	else:
+		for elm in fruit_color_map.values():
+			for child in elm.get_children():
+				child.self_modulate.a = 0.3
+				child.collision_enabled = false
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
